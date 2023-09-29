@@ -1,6 +1,6 @@
 .store-caption {
   min-height: 50vh;
-  background: url("./images/wave.svg");
+  background: url("./public/images/wave.svg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -80,7 +80,7 @@
 .footer {
   position: relative;
   min-height: 70vh;
-  background: url("./images/footer-wave.svg");
+  background: url("./public/images/footer-wave.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
