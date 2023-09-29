@@ -2,6 +2,8 @@
 import SectionHeader from "../components/SectionHeader";
 import Categories from "../components/Categories";
 
+import HeroBG from '../assets/wave.svg';
+
 const Home = () => {
   return (
     <>
