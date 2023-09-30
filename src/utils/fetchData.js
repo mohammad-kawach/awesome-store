@@ -7,3 +7,7 @@ const api = axios.create({
 export const fetchCategories = () => {
   return api.get("/products/categories").then((response) => response.data);
 };
+
+export const fetchProducts = () => {
+  return api.get("/products").then((response) => response.data);
+};

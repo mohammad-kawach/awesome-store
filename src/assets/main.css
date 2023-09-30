@@ -77,6 +77,28 @@
 
 /* End WaveLoader */
 
+.product-card {
+  position: relative;
+}
+
+.product-card .product-price {
+  position: absolute;
+  z-index: 100;
+  padding: 4px;
+  font-weight: bold;
+  background-color: #28a745;
+  /* opacity: .8; */
+  right: 15px;
+  top: 5px;
+  border-radius: 9px;
+}
+
+.product-rate {
+  margin-top: auto;
+  color: #ff9900; /* Set the desired color */
+  font-weight: bold;
+}
+
 .footer {
   position: relative;
   min-height: 70vh;
@@ -85,6 +107,12 @@
   background-size: cover;
   background-position: center;
   color: #ccc;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    min-height: 85vh;
+  }
 }
 
 .footer .container-fluid {

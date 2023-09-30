@@ -16,7 +16,7 @@ const Category = (props) => {
           <Card.Title className="uppercase">{props.title}</Card.Title>
           <Card.Text>{props.caption}</Card.Text>
           <div className="mt-auto">
-            <Button variant="primary">Go somewhere</Button>
+            <Button variant="primary">Explore</Button>
           </div>
         </Card.Body>
       </Card>

@@ -29,7 +29,7 @@ const Categories = () => {
   ];
 
   return (
-    <div>
+    <>
       {status === "loading" ? <WaveLoader /> : null}
       {status === "failed" ? (
         <div className="alert alert-danger">Failed To Fetch Data</div>
@@ -41,7 +41,7 @@ const Categories = () => {
           ))}
         </div>
       ) : null}
-    </div>
+    </>
   );
 };
 

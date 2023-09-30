@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Layout from "./Layout";
 
 import "./assets/main.css";
+import AllProducts from "./pages/AllProducts";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/all-products" element={<AllProducts />} />
           </Route>
         </Routes>
       </div>
