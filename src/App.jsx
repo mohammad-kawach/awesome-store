@@ -6,6 +6,7 @@ import Layout from "./Layout";
 import "./assets/main.css";
 import AllProducts from "./pages/AllProducts";
 import PageNotFound from "./pages/PageNotFound";
+import CategoryPage from "./pages/CategoryPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/all-products" element={<AllProducts />} />
             <Route path="*" element={<PageNotFound />} />
+            <Route path="/categories/:categoryName" element={<CategoryPage />} />
           </Route>
         </Routes>
       </Router>

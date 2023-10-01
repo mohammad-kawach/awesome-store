@@ -2,6 +2,7 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const Category = (props) => {
   return (
@@ -16,7 +17,9 @@ const Category = (props) => {
           <Card.Title className="uppercase">{props.title}</Card.Title>
           <Card.Text>{props.caption}</Card.Text>
           <div className="mt-auto">
-            <Button variant="primary">Explore</Button>
+            <Link to={`/categories/${props.title}`}>
+              <Button variant="primary">Explore</Button>
+            </Link>
           </div>
         </Card.Body>
       </Card>

@@ -1,7 +1,7 @@
 import { Button, Card } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-const Product = (props) => {
+const ProductCard = (props) => {
   return (
     <div className="col-sm-12 col-md-6 col-lg-3 d-flex product-card">
       <p className="product-price">{props.price} $</p>
@@ -16,7 +16,10 @@ const Product = (props) => {
           <Card.Title className="uppercase">{props.title}</Card.Title>
           <div className="product-info text-center mt-auto">
             <div className="product-rate">{props.rate} out of 5</div>
-            <Button variant="primary">Explore</Button>
+            <div className="mt-3 d-flex justify-content-between">
+              <Button variant="primary">Explore</Button>
+              <Button variant="secondary">Add To Card</Button>
+            </div>
           </div>
         </Card.Body>
       </Card>
@@ -24,7 +27,7 @@ const Product = (props) => {
   );
 };
 
-Product.propTypes = {
+ProductCard.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string,
   image: PropTypes.string,
@@ -33,4 +36,4 @@ Product.propTypes = {
   rate: PropTypes.number,
 };
 
-export default Product;
+export default ProductCard;

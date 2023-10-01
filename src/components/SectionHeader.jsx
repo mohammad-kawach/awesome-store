@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const SectionHeader = (props) => {
   return (
     <div className="section-header text-center">
-      <h1 className="my-3">{props.headerText}</h1>
+      <h1 className="my-3 uppercase">{props.headerText}</h1>
       <div className="underline"></div>
     </div>
   );

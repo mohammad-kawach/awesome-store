@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsAsync } from "../features/products/productsSlice";
-import Product from "./ProductCard";
+import ProductCard from "./ProductCard";
 import WaveLoader from "./WaveLoader";
 
 const Products = () => {
@@ -24,7 +24,7 @@ const Products = () => {
       {status === "succeeded" ? (
         <div className="row mt-5">
           {allProducts.map((product) => (
-            <Product
+            <ProductCard
               key={product.id}
               id={product.id}
               title={product.title}
