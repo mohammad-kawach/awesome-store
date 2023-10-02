@@ -7,6 +7,7 @@ import "./assets/main.css";
 import AllProducts from "./pages/AllProducts";
 import PageNotFound from "./pages/PageNotFound";
 import CategoryPage from "./pages/CategoryPage";
+import Product from "./pages/Product";
 
 function App() {
   return (
@@ -17,7 +18,11 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/all-products" element={<AllProducts />} />
             <Route path="*" element={<PageNotFound />} />
-            <Route path="/categories/:categoryName" element={<CategoryPage />} />
+            <Route
+              path="/categories/:categoryName"
+              element={<CategoryPage />}
+            />
+            <Route path="/products/:productId" element={<Product />} />
           </Route>
         </Routes>
       </Router>

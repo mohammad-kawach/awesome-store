@@ -1,5 +1,6 @@
 import { Button, Card } from "react-bootstrap";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const ProductCard = (props) => {
   return (
@@ -17,7 +18,9 @@ const ProductCard = (props) => {
           <div className="product-info text-center mt-auto">
             <div className="product-rate">{props.rate} out of 5</div>
             <div className="mt-3 d-flex justify-content-between">
-              <Button variant="primary">Explore</Button>
+              <Link to={`/products/${props.id}`}>
+                <Button variant="primary">Explore</Button>
+              </Link>
               <Button variant="secondary">Add To Card</Button>
             </div>
           </div>

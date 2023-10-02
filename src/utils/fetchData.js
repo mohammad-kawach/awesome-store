@@ -15,3 +15,7 @@ export const fetchProducts = () => {
 export const fetchProductsByCategory = (categoryName) => {
   return api.get(`/products/category/${categoryName}`).then((response) => response.data);
 };
+
+export const fetchProductById = (id) => {
+  return api.get(`/products/${id}`).then((response) => response.data);
+};
