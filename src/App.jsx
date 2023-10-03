@@ -8,6 +8,7 @@ import AllProducts from "./pages/AllProducts";
 import PageNotFound from "./pages/PageNotFound";
 import CategoryPage from "./pages/CategoryPage";
 import Product from "./pages/Product";
+import PaymnetCard from "./pages/PaymentCard";
 
 function App() {
   return (
@@ -17,12 +18,13 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/all-products" element={<AllProducts />} />
-            <Route path="*" element={<PageNotFound />} />
             <Route
               path="/categories/:categoryName"
               element={<CategoryPage />}
             />
             <Route path="/products/:productId" element={<Product />} />
+            <Route path="/card" element={<PaymnetCard />} />
+            <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>
       </Router>

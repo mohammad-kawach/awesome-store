@@ -26,11 +26,15 @@ function MainNavbar() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <Nav.Link>Home</Nav.Link>
+            <Link className="nav-link" to="/">
+              Home
             </Link>
-            <Nav.Link href="#action2">All Products</Nav.Link>
-            <Nav.Link href="#action2">Card</Nav.Link>
+            <Link className="nav-link" to="/all-products">
+              All Products
+            </Link>
+            <Link className="nav-link" to="/card">
+              Card
+            </Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control

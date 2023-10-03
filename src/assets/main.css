@@ -1,3 +1,14 @@
+.nav-link {
+  text-decoration: none;
+  margin: auto;
+  color: #ccc;
+  transition: ease-in-out .7s;
+}
+
+.nav-link:hover {
+  color: #eee;
+}
+
 .store-caption {
   min-height: 50vh;
   background: url("./images/wave.svg");
@@ -165,3 +176,28 @@
   color: #ddd;
 }
 /* End Not Found */
+
+/* Start Product Card */
+
+.product-card .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.product-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.product-cart-control {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  align-items: center;
+}
+
+/* End Product Card */

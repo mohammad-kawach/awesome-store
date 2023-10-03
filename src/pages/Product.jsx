@@ -6,9 +6,13 @@ import NotFound from "../components/NotFound";
 import SectionHeader from "../components/SectionHeader";
 // import ProductCard from "../components/ProductCard";
 import { Card, Container, Image } from "react-bootstrap";
+// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addToCard } from "../features/card/cardSlice";
 
 const Product = () => {
   const { productId } = useParams();
+  const dispatch = useDispatch();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -24,6 +28,12 @@ const Product = () => {
     }
   };
 
+  const handleAddToCard = () => {
+    if (product) {
+      dispatch(addToCard(product));
+    }
+  };
+
   useEffect(() => {
     // Fetch data when the component mounts
     fetchData();
@@ -32,13 +42,13 @@ const Product = () => {
   return (
     <>
       {loading ? <WaveLoader /> : null}
-      {!loading && product === "" ? (
+      {!loading && product === null ? (
         <div className="text-center">
           <NotFound />
         </div>
       ) : null}
       {!loading && product !== null ? (
-        <Container className="m-5">
+        <Container className="my-5">
           <SectionHeader headerText={product.title} />
           <Card className="product-card">
             <Image
@@ -49,10 +59,34 @@ const Product = () => {
               style={{ height: "200px", width: "200px", margin: "0 auto" }}
             />
             <Card.Body>
-              <Card.Title>{product.title}</Card.Title>
+              <Card.Title className="text-center my-3 title">
+                {product.title}
+              </Card.Title>
               <Card.Text>{product.description}</Card.Text>
-              <Card.Text>Price: ${product.price}</Card.Text>
-              {/* Render other product details */}
+              <div className="product-details">
+                <Card.Text className="price">Price: ${product.price}</Card.Text>
+                <div>category : {product.category}</div>
+                <div>rate : {product.rating.rate}</div>
+                <div>count : {product.rating.count}</div>
+                {/* Render other product details */}
+              </div>
+              <div className="product-cart-control">
+                <button
+                  className="btn btn-primary my-3"
+                  onClick={handleAddToCard}
+                  // disabled={productInCard.quantity === product.quantity ? "disabled" : null}
+                >
+                  Add to cart
+                </button>
+                <button
+                  className="btn btn-danger my-3"
+                  disabled="disabled"
+                  // onClick={handleAddToCard}
+                  // disabled={productInCard.quantity === product.quantity ? "disabled" : null}
+                >
+                  Remove from cart
+                </button>
+              </div>
             </Card.Body>
           </Card>
         </Container>
