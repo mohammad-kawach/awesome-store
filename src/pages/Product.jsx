@@ -4,15 +4,13 @@ import { useEffect, useState } from "react";
 import WaveLoader from "../components/WaveLoader";
 import NotFound from "../components/NotFound";
 import SectionHeader from "../components/SectionHeader";
-// import ProductCard from "../components/ProductCard";
-import { Card, Container, Image } from "react-bootstrap";
-// import { useDispatch, useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCard } from "../features/card/cardSlice";
 
 const Product = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
+  const cardProducts = useSelector((state) => state.card.data);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -39,6 +37,10 @@ const Product = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    console.log("Card : ", cardProducts);
+  }, [cardProducts]);
+
   return (
     <>
       {loading ? <WaveLoader /> : null}
@@ -48,48 +50,39 @@ const Product = () => {
         </div>
       ) : null}
       {!loading && product !== null ? (
-        <Container className="my-5">
+        <div className="container my-5">
           <SectionHeader headerText={product.title} />
-          <Card className="product-card">
-            <Image
-              className="product-image"
-              src={product.image}
-              alt={product.title}
-              fluid
-              style={{ height: "200px", width: "200px", margin: "0 auto" }}
-            />
-            <Card.Body>
-              <Card.Title className="text-center my-3 title">
-                {product.title}
-              </Card.Title>
-              <Card.Text>{product.description}</Card.Text>
-              <div className="product-details">
-                <Card.Text className="price">Price: ${product.price}</Card.Text>
-                <div>category : {product.category}</div>
-                <div>rate : {product.rating.rate}</div>
-                <div>count : {product.rating.count}</div>
+          <div className="product">
+            <div className="product-image">
+              <img src={product.image} alt={product.title} />
+            </div>
+            <div className="product-details">
+              {/* <h2 className="product-title">{product.title}</h2> */}
+              <p className="product-description mx-2 my-5">
+                {product.description}
+              </p>
+              <div className="product-info">
+                <p className="product-price">Price: ${product.price}</p>
+                <p className="product-category">Category: {product.category}</p>
+                <p className="product-rating">
+                  Rating: {product.rating.rate} ({product.rating.count} reviews)
+                </p>
                 {/* Render other product details */}
               </div>
               <div className="product-cart-control">
                 <button
                   className="btn btn-primary my-3"
                   onClick={handleAddToCard}
-                  // disabled={productInCard.quantity === product.quantity ? "disabled" : null}
                 >
                   Add to cart
                 </button>
-                <button
-                  className="btn btn-danger my-3"
-                  disabled="disabled"
-                  // onClick={handleAddToCard}
-                  // disabled={productInCard.quantity === product.quantity ? "disabled" : null}
-                >
+                <button className="btn btn-danger my-3" disabled="disabled">
                   Remove from cart
                 </button>
               </div>
-            </Card.Body>
-          </Card>
-        </Container>
+            </div>
+          </div>
+        </div>
       ) : null}
     </>
   );
