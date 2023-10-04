@@ -17,6 +17,7 @@ const ProductCard = (props) => {
           <Card.Title className="uppercase">{props.title}</Card.Title>
           <div className="product-info text-center mt-auto">
             <div className="product-rate">{props.rate} out of 5</div>
+            <div className="product-rate">{props.count} in stock</div>
             <div className="mt-3 d-flex justify-content-between">
               <Link to={`/products/${props.id}`}>
                 <Button variant="primary">Explore</Button>
@@ -31,12 +32,13 @@ const ProductCard = (props) => {
 };
 
 ProductCard.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number,
   title: PropTypes.string,
   image: PropTypes.string,
   description: PropTypes.string,
   price: PropTypes.number,
   rate: PropTypes.number,
+  count: PropTypes.number,
 };
 
 export default ProductCard;

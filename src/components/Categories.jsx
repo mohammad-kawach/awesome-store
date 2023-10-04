@@ -14,13 +14,19 @@ const Categories = () => {
     dispatch(fetchCategoriesAsync());
   }, [dispatch]);
 
+  useEffect(() => {
+    categories.map((category, key) => {
+      console.log(category, key);
+    })
+  });
+
   const images = [
     "https://picsum.photos/id/1/200/200",
     "https://picsum.photos/id/26/200/200",
     "https://picsum.photos/id/338/200/200",
     "https://picsum.photos/id/399/200/200",
   ];
-  
+
   const captions = [
     "Some awesome Electronics",
     "Some awesome jewelery",
@@ -37,7 +43,12 @@ const Categories = () => {
       {status === "succeeded" ? (
         <div className="row">
           {categories.map((category, key) => (
-            <Category key={category} title={category} image={images[key]} caption={captions[key]} />
+            <Category
+              key={key}
+              title={category}
+              image={images[key]}
+              caption={captions[key]}
+            />
           ))}
         </div>
       ) : null}

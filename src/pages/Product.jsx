@@ -49,7 +49,7 @@ const Product = () => {
           <NotFound />
         </div>
       ) : null}
-      {!loading && product !== null ? (
+      {!loading && product !== null && product ? (
         <div className="container my-5">
           <SectionHeader headerText={product.title} />
           <div className="product">

@@ -26,13 +26,13 @@ function MainNavbar() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Link className="nav-link" to="/">
+            <Link to="/" className="nav-link">
               Home
             </Link>
-            <Link className="nav-link" to="/all-products">
+            <Link to="/all-products" className="nav-link">
               All Products
             </Link>
-            <Link className="nav-link" to="/card">
+            <Link to="/card" className="nav-link">
               Card
             </Link>
           </Nav>
