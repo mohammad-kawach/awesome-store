@@ -16,6 +16,16 @@ const cardSlice = createSlice({
         state.data.push({ ...action.payload, quantity: 1 });
       }
     },
+    addAmountToCard: (state, action) => {
+      const { item, quantity } = action.payload;
+      const itemInCart = state.data.find((item) => item.id === item.id);
+      
+      if (itemInCart) {
+        itemInCart.quantity += quantity;
+      } else {
+        state.data.push({ ...item, quantity });
+      }
+    },
     incrementQuantity: (state, action) => {
       const item = state.data.find((item) => item.id === action.payload);
       item.quantity++;
@@ -43,6 +53,7 @@ const cardSlice = createSlice({
 export default cardSlice.reducer;
 export const {
   addToCard,
+  addAmountToCard,
   incrementQuantity,
   decrementQuantity,
   removeItem,

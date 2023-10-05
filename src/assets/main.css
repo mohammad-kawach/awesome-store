@@ -227,3 +227,39 @@
 }
 
 /* End Product Card */
+
+.quantity-input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 15px;
+}
+
+.overall-price {
+  color: #080;
+}
+
+.result {
+  text-align: right;
+  font-weight: bold;
+}
+
+.card-btns {
+  display: grid;
+  grid-gap: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .card-btns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .card-btns {
+    grid-template-columns: 1fr;
+  }
+}

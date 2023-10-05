@@ -4,15 +4,22 @@ import { useEffect, useState } from "react";
 import WaveLoader from "../components/WaveLoader";
 import NotFound from "../components/NotFound";
 import SectionHeader from "../components/SectionHeader";
-import { useDispatch, useSelector } from "react-redux";
-import { addToCard } from "../features/card/cardSlice";
+import { useSelector } from "react-redux";
+import { Button } from "react-bootstrap";
+import ProductCountModal from "../components/ProductCountModal";
 
 const Product = () => {
   const { productId } = useParams();
-  const dispatch = useDispatch();
   const cardProducts = useSelector((state) => state.card.data);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const [cardQuantity, setCardQuantity] = useState(0);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const fetchData = async () => {
     try {
@@ -23,12 +30,6 @@ const Product = () => {
     } catch (error) {
       console.error("Error fetching product:", error);
       setLoading(false);
-    }
-  };
-
-  const handleAddToCard = () => {
-    if (product) {
-      dispatch(addToCard(product));
     }
   };
 
@@ -70,18 +71,30 @@ const Product = () => {
                 {/* Render other product details */}
               </div>
               <div className="product-cart-control">
-                <button
+                {/* <button
                   className="btn btn-primary my-3"
                   onClick={handleAddToCard}
                 >
                   Add to cart
-                </button>
+                </button> */}
+                <Button variant="primary" onClick={handleShow}>
+                  Launch demo modal
+                </Button>
                 <button className="btn btn-danger my-3" disabled="disabled">
                   Remove from cart
                 </button>
               </div>
             </div>
           </div>
+
+          <ProductCountModal
+            cardQuantity={cardQuantity}
+            setCardQuantity={setCardQuantity}
+            show={show}
+            handleClose={handleClose}
+            max={product.rating.count}
+            product={product}
+          />
         </div>
       ) : null}
     </>
