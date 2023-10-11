@@ -22,7 +22,7 @@ const ProductCard = (props) => {
               <Link to={`/products/${props.id}`}>
                 <Button variant="primary">Explore</Button>
               </Link>
-              <Button variant="secondary">Add To Card</Button>
+              {/* <Button variant="secondary">Add To Card</Button> */}
             </div>
           </div>
         </Card.Body>

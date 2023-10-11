@@ -78,7 +78,7 @@ const Product = () => {
                   Add to cart
                 </button> */}
                 <Button variant="primary" onClick={handleShow}>
-                  Launch demo modal
+                  Add to cart
                 </Button>
                 <button className="btn btn-danger my-3" disabled="disabled">
                   Remove from cart

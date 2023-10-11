@@ -19,7 +19,11 @@ const ProductCountModal = (props) => {
 
   const handleQuantityChange = (e) => {
     const value = parseInt(e.target.value);
-    props.setCardQuantity(value);
+    if (isNaN(value)) {
+      props.setCardQuantity(0); // Set an appropriate default value
+    } else {
+      props.setCardQuantity(value);
+    }
   };
 
   return (
@@ -29,7 +33,8 @@ const ProductCountModal = (props) => {
       </Modal.Header>
       <div className="info m-3">
         <h3>Please type in the quantity:</h3>
-        <input  
+        <p>{props.max} in stock</p>
+        <input
           className="quantity-input"
           type="text"
           pattern="[0-9]*"

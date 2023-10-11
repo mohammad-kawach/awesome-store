@@ -18,7 +18,7 @@ const cardSlice = createSlice({
     },
     addAmountToCard: (state, action) => {
       const { item, quantity } = action.payload;
-      const itemInCart = state.data.find((item) => item.id === item.id);
+      const itemInCart = state.data.find((cartItem) => cartItem.id === item.id);
       
       if (itemInCart) {
         itemInCart.quantity += quantity;
