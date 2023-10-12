@@ -3,11 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import SectionHeader from "../components/SectionHeader";
 import { setCardEmpty } from "../features/card/cardSlice";
 import { Table } from "react-bootstrap";
+import CheckCartModal from "../components/CheckCartModal";
 
 const PaymentCard = () => {
   const cardInfo = useSelector((state) => state.card.data);
   const dispatch = useDispatch();
   const [overall, setOverall] = useState(0);
+  const [show, setShow] = useState(false);
+  const [payment, setPayment] = useState(false);
 
   useEffect(() => {
     // Calculate the overall price when the cardInfo changes
@@ -21,6 +24,19 @@ const PaymentCard = () => {
   const handleResetCard = () => {
     dispatch(setCardEmpty());
   };
+
+  useEffect(() => {
+    if (payment) {
+      const timeout = setTimeout(() => {
+        setPayment(false);
+      }, 5000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [payment]);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div className="container my-5">
@@ -57,11 +73,26 @@ const PaymentCard = () => {
             <button className="btn btn-danger" onClick={handleResetCard}>
               Reset Card
             </button>
-            <button className="btn btn-primary">Confirm payment</button>
+            <button className="btn btn-primary" onClick={handleShow}>
+              Confirm payment
+            </button>
           </div>
+          <CheckCartModal
+            show={show}
+            handleClose={handleClose}
+            overall={overall}
+            setPayment={setPayment}
+          />
         </>
       ) : (
-        <div className="alert alert-info my-4">Card is empty</div>
+        <>
+          {!payment && (
+            <div className="alert alert-info my-4">Card is empty</div>
+          )}
+          {payment && (
+            <div className="alert alert-success my-4">Payment successful!</div>
+          )}
+        </>
       )}
     </div>
   );
