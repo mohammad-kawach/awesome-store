@@ -1,13 +1,29 @@
 import { faSnowflake } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { setSearchedProducts } from "../features/searchedProduct/searchedProductsSlice";
 
 function MainNavbar() {
+  // const [searchedProducts, setSearchedProducts] = useState("");
+
+  // const handleSearchInputChange = (event) => {
+  //   setSearchedProducts(event.target.value);
+  // };
+
+  const searchedProducts = useSelector((state) => state.searchedProducts);
+  const dispatch = useDispatch();
+
+  const handleSearchInputChange = (event) => {
+    dispatch(setSearchedProducts(event.target.value));
+  };
+
   return (
     <Navbar
       bg="dark"
@@ -42,8 +58,14 @@ function MainNavbar() {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              value={searchedProducts}
+              onChange={handleSearchInputChange}
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-success" disabled={!searchedProducts}>
+              <Link to="/search" className="nav-link">
+                Search
+              </Link>
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Container>

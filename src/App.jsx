@@ -9,6 +9,7 @@ import PageNotFound from "./pages/PageNotFound";
 import CategoryPage from "./pages/CategoryPage";
 import Product from "./pages/Product";
 import PaymnetCard from "./pages/PaymentCard";
+import SearchedProducts from "./pages/SearchedProducts";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             />
             <Route path="/products/:productId" element={<Product />} />
             <Route path="/card" element={<PaymnetCard />} />
+            <Route path="/search" element={<SearchedProducts />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>

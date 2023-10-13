@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 import cardReducer from "../features/card/cardSlice";
 import categorySlice from "../features/category/categorySlice";
 import productsSlice from "../features/products/productsSlice";
+import searchedProductsReducer from "../features/searchedProduct/searchedProductsSlice";
 
 const persistConfig = {
   key: "root",
@@ -17,6 +18,7 @@ export const store = configureStore({
     categories: categorySlice,
     products: productsSlice,
     card: persistedReducer,
+    searchedProducts: searchedProductsReducer,
   },
 });
 

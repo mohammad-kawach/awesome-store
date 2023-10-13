@@ -18,7 +18,7 @@ const ProductCard = (props) => {
           <div className="product-info text-center mt-auto">
             <div className="product-rate">{props.rate} out of 5</div>
             <div className="product-rate">{props.count} in stock</div>
-            <div className="mt-3 d-flex justify-content-between">
+            <div className="mt-3 text-center">
               <Link to={`/products/${props.id}`}>
                 <Button variant="primary">Explore</Button>
               </Link>
